@@ -4,51 +4,144 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rooms</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <header>
-      <nav>
-        <li>
-          <a href="index.html">Home</a>
-          <a href="rooms.html">Rooms</a>
-          <a href="book.html">Book a Room</a>
-          <a href="bookings.html">My Bookings</a>
-          <a href="contact.html">Contact</a>
+
+  <body class="min-h-screen bg-slate-950 text-slate-200 flex flex-col">
+    <header class="border-b border-slate-800 bg-slate-900/80">
+      <nav class="max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-5">
+        <li
+          class="list-none flex flex-wrap items-center justify-center gap-1 sm:gap-6"
+        >
+          <a
+            href="index.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Home
+          </a>
+
+          <a
+            href="rooms.html"
+            class="rounded-lg bg-indigo-600 px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-white transition hover:bg-indigo-500"
+          >
+            Rooms
+          </a>
+
+          <a
+            href="book.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Book a Room
+          </a>
+
+          <a
+            href="bookings.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            My Bookings
+          </a>
+
+          <a
+            href="contact.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Contact
+          </a>
         </li>
       </nav>
     </header>
-    <main>
-        <section>
-            <h1>Rooms</h1>
-            <p>Here you can view our available rooms and their details.</p>
-            <article>
-                <h2>Room 1</h2>
-                <img src="room1.jpg" alt="Room 1" />
-                <p>Description of Room 1.</p>
-                <p>Features: Projector, Whiteboard</p>
-                <p>Capacity: 20 people</p>
-                <a href="book.html">Book Room 1</a>
-            </article>
-            <article>
-                <h2>Room 2</h2>
-                <img src="room2.jpg" alt="Room 2" />
-                <p>Description of Room 2.</p>
-                <p>Features: Projector</p>
-                <p>Capacity: 25 people</p>
-                <a href="book.html">Book Room 2</a>
-            </article>
-            <article>
-                <h2>Room 3</h2>
-                <img src="room3.jpg" alt="Room 3" />
-                <p>Description of Room 3.</p>
-                <p>Features: Whiteboard</p>
-                <p>Capacity: 30 people</p>
-                <a href="book.html">Book Room 3</a>
-            </article>
-        </section>
+
+    <main class="flex-1 w-full max-w-6xl mx-auto px-3 sm:px-6 py-10 sm:py-16">
+      <section>
+        <h1
+          class="text-3xl sm:text-5xl font-bold tracking-tight text-white text-center sm:text-left"
+        >
+          Rooms
+        </h1>
+
+        <p
+          class="mt-4 text-base sm:text-lg text-slate-400 text-center sm:text-left"
+        >
+          Here you can view our available rooms and their details.
+        </p>
+
+        <article
+          class="mt-8 sm:mt-10 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-6 shadow-xl"
+        >
+          <h2 class="text-2xl font-semibold text-white">Room 1</h2>
+
+          <img
+            src="room1.jpg"
+            alt="Room 1"
+            class="mt-5 h-44 sm:h-64 w-full rounded-xl object-cover bg-slate-800"
+          />
+
+          <p class="mt-5 text-slate-400">Description of Room 1.</p>
+          <p class="mt-2 text-slate-300">Features: Projector, Whiteboard</p>
+          <p class="mt-2 text-slate-300">Capacity: 20 people</p>
+
+          <a
+            href="book.html"
+            class="mt-6 inline-block rounded-lg bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:bg-indigo-500"
+          >
+            Book Room 1
+          </a>
+        </article>
+
+        <article
+          class="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-6 shadow-xl"
+        >
+          <h2 class="text-2xl font-semibold text-white">Room 2</h2>
+
+          <img
+            src="room2.jpg"
+            alt="Room 2"
+            class="mt-5 h-44 sm:h-64 w-full rounded-xl object-cover bg-slate-800"
+          />
+
+          <p class="mt-5 text-slate-400">Description of Room 2.</p>
+          <p class="mt-2 text-slate-300">Features: Projector</p>
+          <p class="mt-2 text-slate-300">Capacity: 25 people</p>
+
+          <a
+            href="book.html"
+            class="mt-6 inline-block rounded-lg bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:bg-indigo-500"
+          >
+            Book Room 2
+          </a>
+        </article>
+
+        <article
+          class="mt-6 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-6 shadow-xl"
+        >
+          <h2 class="text-2xl font-semibold text-white">Room 3</h2>
+
+          <img
+            src="room3.jpg"
+            alt="Room 3"
+            class="mt-5 h-44 sm:h-64 w-full rounded-xl object-cover bg-slate-800"
+          />
+
+          <p class="mt-5 text-slate-400">Description of Room 3.</p>
+          <p class="mt-2 text-slate-300">Features: Whiteboard</p>
+          <p class="mt-2 text-slate-300">Capacity: 30 people</p>
+
+          <a
+            href="book.html"
+            class="mt-6 inline-block rounded-lg bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:bg-indigo-500"
+          >
+            Book Room 3
+          </a>
+        </article>
+      </section>
     </main>
-    <footer>
-        <p>&copy; 2026 Group Room Booking System. All rights reserved.</p>
+
+    <footer class="border-t border-slate-800 bg-slate-900">
+      <p
+        class="max-w-6xl mx-auto px-3 sm:px-6 py-6 text-center text-sm text-slate-500"
+      >
+        &copy; 2026 Group Room Booking System. All rights reserved.
+      </p>
     </footer>
   </body>
 </html>

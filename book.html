@@ -4,80 +4,213 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book a Room</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <header>
-      <nav>
-        <li>
-          <a href="index.html">Home</a>
-          <a href="rooms.html">Rooms</a>
-          <a href="book.html">Book a Room</a>
-          <a href="bookings.html">My Bookings</a>
-          <a href="contact.html">Contact</a>
+
+  <body class="min-h-screen bg-slate-950 text-slate-200 flex flex-col">
+    <header class="border-b border-slate-800 bg-slate-900/80">
+      <nav class="max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-5">
+        <li
+          class="list-none flex flex-wrap items-center justify-center gap-1 sm:gap-6"
+        >
+          <a
+            href="index.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Home
+          </a>
+
+          <a
+            href="rooms.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Rooms
+          </a>
+
+          <a
+            href="book.html"
+            class="rounded-lg bg-indigo-600 px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-white transition hover:bg-indigo-500"
+          >
+            Book a Room
+          </a>
+
+          <a
+            href="bookings.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            My Bookings
+          </a>
+
+          <a
+            href="contact.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Contact
+          </a>
         </li>
       </nav>
     </header>
-    <main>
+
+    <main class="flex-1 w-full max-w-3xl mx-auto px-3 sm:px-6 py-10 sm:py-16">
       <section>
-        <h1>Book a Room</h1>
-        <p>Please fill out the form below to book a room.</p>
-        <form action="" method="post">
-          <legend>Booking Form</legend>
-          <fieldset>
-            <label for="name">Name:</label>
+        <h1
+          class="text-3xl sm:text-5xl font-bold tracking-tight text-white text-center sm:text-left"
+        >
+          Book a Room
+        </h1>
+
+        <p
+          class="mt-4 text-base sm:text-lg text-slate-400 text-center sm:text-left"
+        >
+          Please fill out the form below to book a room.
+        </p>
+
+        <form
+          action=""
+          method="post"
+          class="mt-8 sm:mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-8 shadow-xl"
+        >
+          <legend class="mb-6 text-2xl font-semibold text-white">
+            Booking Form
+          </legend>
+
+          <fieldset class="flex flex-col min-w-0">
+            <label for="name" class="mb-2 font-medium text-slate-300">
+              Name:
+            </label>
+
             <input
               type="text"
               id="name"
               name="name"
               placeholder="Enter your full name"
               required
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
             />
-            <label for="email">Email:</label>
+
+            <label for="email" class="mb-2 font-medium text-slate-300">
+              Email:
+            </label>
+
             <input
               type="email"
               id="email"
               name="email"
               placeholder="Enter your email"
               required
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
             />
-            <label for="number_of_people">Number of People:</label>
+
+            <label
+              for="number_of_people"
+              class="mb-2 font-medium text-slate-300"
+            >
+              Number of People:
+            </label>
+
             <input
               type="number"
               id="number_of_people"
               name="number_of_people"
               placeholder="Enter the number of people"
               required
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
             />
-            <label for="purpose">Purpose of Booking:</label>
+
+            <label for="purpose" class="mb-2 font-medium text-slate-300">
+              Purpose of Booking:
+            </label>
+
             <input
               type="text"
               id="purpose"
               name="purpose"
               placeholder="Enter the purpose of the booking"
               required
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
             />
-            <label for="room">Room:</label>
-            <select id="room" name="room" required>
+
+            <label for="room" class="mb-2 font-medium text-slate-300">
+              Room:
+            </label>
+
+            <select
+              id="room"
+              name="room"
+              required
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+            >
               <option value="">Select a room</option>
               <option value="room1">Room 1</option>
               <option value="room2">Room 2</option>
               <option value="room3">Room 3</option>
             </select>
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required />
-            <label for="time"> Start Time:</label>
-            <input type="time" id="time" name="time" required />
-            <label for="end_time">End Time:</label>
-            <input type="time" id="end_time" name="end_time" required />
-            <label for="terms">Accept Terms and Conditions:</label>
-            <input type="checkbox" id="terms" name="terms" required />
-            <button type="submit">Book Room</button>
+
+            <label for="date" class="mb-2 font-medium text-slate-300">
+              Date:
+            </label>
+
+            <input
+              type="date"
+              id="date"
+              name="date"
+              required
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+            />
+
+            <label for="time" class="mb-2 font-medium text-slate-300">
+              Start Time:
+            </label>
+
+            <input
+              type="time"
+              id="time"
+              name="time"
+              required
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+            />
+
+            <label for="end_time" class="mb-2 font-medium text-slate-300">
+              End Time:
+            </label>
+
+            <input
+              type="time"
+              id="end_time"
+              name="end_time"
+              required
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+            />
+
+            <label for="terms" class="mb-2 font-medium text-slate-300">
+              Accept Terms and Conditions:
+            </label>
+
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              required
+              class="mb-7 size-5 cursor-pointer accent-indigo-600"
+            />
+
+            <button
+              type="submit"
+              class="w-full sm:w-auto rounded-lg bg-indigo-600 px-5 py-3 font-semibold text-white transition hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            >
+              Book Room
+            </button>
           </fieldset>
         </form>
       </section>
     </main>
-    <footer>
-      <p>&copy; 2026 Group Room Booking System. All rights reserved.</p>
+
+    <footer class="border-t border-slate-800 bg-slate-900">
+      <p
+        class="max-w-6xl mx-auto px-3 sm:px-6 py-6 text-center text-sm text-slate-500"
+      >
+        &copy; 2026 Group Room Booking System. All rights reserved.
+      </p>
     </footer>
   </body>
 </html>
