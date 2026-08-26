@@ -4,35 +4,84 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <header>
-      <nav>
-        <li>
-          <a href="index.html">Home</a>
-          <a href="rooms.html">Rooms</a>
-          <a href="book.html">Book a Room</a>
-          <a href="bookings.html">My Bookings</a>
-          <a href="contact.html">Contact</a>
+
+  <body class="min-h-screen bg-slate-950 text-slate-200 flex flex-col">
+    <header class="border-b border-slate-800 bg-slate-900/80">
+      <nav class="max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-5">
+        <li
+          class="list-none flex flex-wrap items-center justify-center gap-1 sm:gap-6"
+        >
+          <a
+            href="index.html"
+            class="rounded-lg bg-indigo-600 px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-white transition hover:bg-indigo-500"
+          >
+            Home
+          </a>
+
+          <a
+            href="rooms.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Rooms
+          </a>
+
+          <a
+            href="book.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Book a Room
+          </a>
+
+          <a
+            href="bookings.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            My Bookings
+          </a>
+
+          <a
+            href="contact.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Contact
+          </a>
         </li>
       </nav>
     </header>
-    <main>
-      <h1>Welcome to the Group Room Booking System</h1>
-      <section>
-        <p>This is the home section of the group room booking system.</p>
-        <article>
-          <h2>About Us</h2>
-          <p>
+
+    <main class="flex-1 w-full max-w-6xl mx-auto px-3 sm:px-6 py-10 sm:py-16">
+      <h1
+        class="max-w-4xl text-3xl sm:text-5xl font-bold tracking-tight text-white break-words text-center sm:text-left"
+      >
+        Welcome to the Group Room Booking System
+      </h1>
+
+      <section class="mt-6 sm:mt-8">
+        <p class="text-base sm:text-lg text-slate-400 text-center sm:text-left">
+          This is the home section of the group room booking system.
+        </p>
+
+        <article
+          class="mt-8 sm:mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-5 sm:p-8 shadow-xl"
+        >
+          <h2 class="text-2xl font-semibold text-white">About Us</h2>
+
+          <p class="mt-4 max-w-3xl leading-7 text-slate-400">
             We are a leading provider of group room booking services, dedicated
             to making your event planning seamless and enjoyable.
           </p>
         </article>
       </section>
-      <section>
-        <article>
-          <h2>Our Services</h2>
-          <p>
+
+      <section class="mt-6">
+        <article
+          class="rounded-2xl border border-slate-800 bg-slate-900 p-5 sm:p-8 shadow-xl"
+        >
+          <h2 class="text-2xl font-semibold text-white">Our Services</h2>
+
+          <p class="mt-4 max-w-3xl leading-7 text-slate-400">
             We offer a wide range of services to cater to your group room
             booking needs, including venue selection, catering, and event
             management.
@@ -40,8 +89,13 @@
         </article>
       </section>
     </main>
-    <footer>
-        <p>&copy; 2026 Group Room Booking System. All rights reserved.</p>
+
+    <footer class="border-t border-slate-800 bg-slate-900">
+      <p
+        class="max-w-6xl mx-auto px-3 sm:px-6 py-6 text-center text-sm text-slate-500"
+      >
+        &copy; 2026 Group Room Booking System. All rights reserved.
+      </p>
     </footer>
   </body>
 </html>

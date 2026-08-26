@@ -4,77 +4,182 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact NTI Gymnasiet Södertörn</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <header>
-      <nav>
-        <li>
-          <a href="index.html">Home</a>
-          <a href="rooms.html">Rooms</a>
-          <a href="book.html">Book a Room</a>
-          <a href="bookings.html">My Bookings</a>
-          <a href="contact.html">Contact</a>
+
+  <body class="min-h-screen bg-slate-950 text-slate-200 flex flex-col">
+    <header class="border-b border-slate-800 bg-slate-900/80">
+      <nav class="max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-5">
+        <li
+          class="list-none flex flex-wrap items-center justify-center gap-1 sm:gap-6"
+        >
+          <a
+            href="index.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Home
+          </a>
+
+          <a
+            href="rooms.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Rooms
+          </a>
+
+          <a
+            href="book.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            Book a Room
+          </a>
+
+          <a
+            href="bookings.html"
+            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          >
+            My Bookings
+          </a>
+
+          <a
+            href="contact.html"
+            class="rounded-lg bg-indigo-600 px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-white transition hover:bg-indigo-500"
+          >
+            Contact
+          </a>
         </li>
       </nav>
     </header>
-    <main>
-      <section>
-        <h1>Contact NTI Gymnasiet Södertörn</h1>
-        <p>
+
+    <main class="flex-1 w-full max-w-6xl mx-auto px-3 sm:px-6 py-10 sm:py-16">
+      <section
+        class="rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-8 shadow-xl"
+      >
+        <h1
+          class="text-3xl sm:text-4xl font-bold tracking-tight text-white break-words text-center sm:text-left"
+        >
+          Contact NTI Gymnasiet Södertörn
+        </h1>
+
+        <p
+          class="mt-4 max-w-3xl leading-7 text-slate-400 text-sm text-center sm:text-left"
+        >
           If you have questions about our school, programs, or admissions,
           please use the details below.
         </p>
 
-        <h2>Opening Hours</h2>
-        <ul>
-          <li>Monday - Friday: 8:00 AM - 4:00 PM</li>
-          <li>Saturday: Closed</li>
-          <li>Sunday: Closed</li>
+        <h2 class="mt-8 sm:mt-10 text-2xl font-semibold text-white">
+          Opening Hours
+        </h2>
+
+        <ul class="mt-4 space-y-2 text-slate-400">
+          <li class="text-sm">Monday - Friday: 8:00 AM - 4:00 PM</li>
+          <li class="text-sm">Saturday: Closed</li>
+          <li class="text-sm">Sunday: Closed</li>
         </ul>
 
-        <h2>School Contact</h2>
-        <address>
-          <p><strong>NTI Gymnasiet Södertörn</strong></p>
+        <h2 class="mt-8 sm:mt-10 text-2xl font-semibold text-white">
+          School Contact
+        </h2>
+
+        <address
+          class="mt-4 rounded-xl border border-slate-800 bg-slate-950 p-4 sm:p-6 not-italic leading-7 text-slate-400 break-words"
+        >
+          <p>
+            <strong class="text-white">NTI Gymnasiet Södertörn</strong>
+          </p>
+
           <p>Huddinge, Stockholm</p>
           <p>Sweden</p>
-          <p>Email: <a href="mailto:sodertorn@ntig.se">sodertorn@ntig.se</a></p>
+
+          <p>
+            Email:
+            <a
+              href="mailto:sodertorn@ntig.se"
+              class="font-medium text-indigo-400 transition hover:text-indigo-300 break-all"
+            >
+              sodertorn@ntig.se
+            </a>
+          </p>
+
           <p>
             Website:
             <a
               href="https://ntigymnasiet.se/sodertorn/"
               target="_blank"
               rel="noreferrer"
-              >ntigymnasiet.se/sodertorn</a
+              class="font-medium text-indigo-400 transition hover:text-indigo-300 break-all"
             >
+              ntigymnasiet.se/sodertorn
+            </a>
           </p>
         </address>
       </section>
 
-      <section>
-        <h2>Frequently Asked Questions</h2>
+      <section
+        class="mt-8 rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-8 shadow-xl"
+      >
+        <h2 class="text-2xl font-semibold text-white">
+          Frequently Asked Questions
+        </h2>
 
-        <details>
-          <summary>How can I contact the school?</summary>
-          <p>
+        <details
+          class="mt-6 rounded-xl border border-slate-800 bg-slate-950 p-4 sm:p-5"
+        >
+          <summary
+            class="cursor-pointer font-semibold text-white hover:text-indigo-400"
+          >
+            How can I contact the school?
+          </summary>
+
+          <p class="mt-4 leading-7 text-slate-400 break-words">
             You can email the school at
-            <a href="mailto:sodertorn@ntig.se">sodertorn@ntig.se</a> or visit
-            the official school website for more information.
+            <a
+              href="mailto:sodertorn@ntig.se"
+              class="font-medium text-indigo-400 hover:text-indigo-300 break-all"
+            >
+              sodertorn@ntig.se
+            </a>
+            or visit the official school website for more information.
           </p>
         </details>
 
-        <details>
-          <summary>Where is NTI Gymnasiet Södertörn located?</summary>
-          <p>The school is located in Huddinge, Stockholm, Sweden.</p>
+        <details
+          class="mt-4 rounded-xl border border-slate-800 bg-slate-950 p-4 sm:p-5"
+        >
+          <summary
+            class="cursor-pointer font-semibold text-white hover:text-indigo-400"
+          >
+            Where is NTI Gymnasiet Södertörn located?
+          </summary>
+
+          <p class="mt-4 leading-7 text-slate-400">
+            The school is located in Huddinge, Stockholm, Sweden.
+          </p>
         </details>
 
-        <details>
-          <summary>When is the school office open?</summary>
-          <p>The office is open Monday to Friday from 8:00 AM to 4:00 PM.</p>
+        <details
+          class="mt-4 rounded-xl border border-slate-800 bg-slate-950 p-4 sm:p-5"
+        >
+          <summary
+            class="cursor-pointer font-semibold text-white hover:text-indigo-400"
+          >
+            When is the school office open?
+          </summary>
+
+          <p class="mt-4 leading-7 text-slate-400">
+            The office is open Monday to Friday from 8:00 AM to 4:00 PM.
+          </p>
         </details>
       </section>
     </main>
-    <footer>
-      <p>&copy; 2026 Group Room Booking System. All rights reserved.</p>
+
+    <footer class="border-t border-slate-800 bg-slate-900">
+      <p
+        class="max-w-6xl mx-auto px-3 sm:px-6 py-6 text-center text-sm text-slate-500"
+      >
+        &copy; 2026 Group Room Booking System. All rights reserved.
+      </p>
     </footer>
   </body>
 </html>
