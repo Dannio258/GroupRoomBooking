@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const formData = new FormData(bookingForm);
 
       const booking = {
-        id: "BK-" + Date.now(),
+        id: "BK-" + Date.now(), // Date in ms since 1970-01-01.
         name: formData.get("name"),
         email: formData.get("email"),
         numberOfPeople: formData.get("number_of_people"),
@@ -289,11 +289,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const startEditing = (row, booking, actionsCell) => {
     bookingFields.forEach(({ key, label, type, min, readOnly }, index) => {
       const cell = row.cells[index];
+
+      if (readOnly) {
+        setCellValue(cell, booking[key]);
+        return;
+      }
+
       cell.textContent = "";
 
       const input = document.createElement("input");
       input.type = type;
       input.value = booking[key] ?? "";
+      input.dataset.field = key;
       input.setAttribute("aria-label", label);
       input.className =
         "w-full min-w-0 rounded-lg border border-slate-700 bg-slate-950 px-2 py-2 text-center text-slate-200";
@@ -323,18 +330,23 @@ document.addEventListener("DOMContentLoaded", () => {
     actionsCell
       .querySelector('[data-action="save"]')
       .addEventListener("click", async () => {
-        const inputs = [...row.querySelectorAll("input")];
         const updatedBooking = { ...booking };
+        const inputsByKey = {};
 
-        bookingFields.forEach(({ key }, index) => {
-          updatedBooking[key] = inputs[index].value;
+        bookingFields.forEach(({ key }) => {
+          const input = row.querySelector(`input[data-field="${key}"]`);
+          if (input) {
+            inputsByKey[key] = input;
+            updatedBooking[key] = input.value;
+          }
         });
 
-        const numberOfPeopleInput = inputs[3];
-        const roomInput = inputs[5];
-        const dateInput = inputs[6];
-        const startTimeInput = inputs[7];
-        const endTimeInput = inputs[8];
+        const inputs = Object.values(inputsByKey);
+        const numberOfPeopleInput = inputsByKey.numberOfPeople;
+        const roomInput = inputsByKey.room;
+        const dateInput = inputsByKey.date;
+        const startTimeInput = inputsByKey.time;
+        const endTimeInput = inputsByKey.endTime;
         const capacity = await getRoomCapacity(roomInput.value.trim());
 
         numberOfPeopleInput.max = capacity || "";
