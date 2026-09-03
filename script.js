@@ -10,3 +10,38 @@ navLinks.forEach((link) => {
     link.classList.add("bg-indigo-600", "text-white", "hover:bg-indigo-500");
   }
 });
+
+const sliders = document.querySelectorAll(".room-slider");
+
+sliders.forEach((slider) => {
+  const images = slider.querySelectorAll("img");
+
+  let currentImage = 0;
+  let isResetting = false;
+
+  setInterval(() => {
+    if (isResetting) return;
+
+    currentImage++;
+
+    slider.style.transition = "transform 700ms cubic-bezier(0.65, 0, 0.35, 1)";
+
+    slider.style.transform = `translateX(-${currentImage * 100}%)`;
+  }, 2800);
+
+  slider.addEventListener("transitionend", () => {
+    if (currentImage === images.length - 1) {
+      isResetting = true;
+
+      slider.style.transition = "none";
+      currentImage = 0;
+      slider.style.transform = "translateX(0)";
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          isResetting = false;
+        });
+      });
+    }
+  });
+});
