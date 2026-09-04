@@ -4,92 +4,160 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact NTI Gymnasiet Södertörn</title>
-    <script src="script.js" defer></script>
+
+    <script src="script.js"></script>
+
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+    </style>
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
-  <body class="min-h-screen bg-slate-950 text-slate-200 flex flex-col">
-    <header class="border-b border-slate-800 bg-slate-900/80">
-      <nav class="w-full mx-auto px-3 sm:px-6 py-4 sm:py-5">
+  <body
+    class="min-h-screen bg-slate-50 text-slate-800 transition-colors dark:bg-slate-950 dark:text-slate-200 flex flex-col"
+  >
+    <header
+      class="border-b border-slate-200 bg-white/80 dark:border-slate-800 dark:bg-slate-900/80"
+    >
+      <nav
+        class="grid w-full grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] items-center px-3 py-4 sm:px-6 sm:py-5"
+      >
+        <div></div>
+
         <ul>
           <li
             class="list-none flex flex-wrap items-center justify-center gap-1 sm:gap-6"
           >
             <a
               href="index.html"
-              class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
             >
               Home
             </a>
 
             <a
               href="rooms.html"
-              class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
             >
               Rooms
             </a>
 
             <a
               href="book.html"
-              class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
             >
               Book a Room
             </a>
 
             <a
               href="bookings.html"
-              class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
             >
               My Bookings
             </a>
 
             <a
               href="contact.html"
-              class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
             >
               Contact
             </a>
           </li>
         </ul>
+
+        <button
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle dark and light mode"
+          class="flex size-10 items-center justify-center justify-self-end rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+        >
+          <svg
+            class="size-5 dark:hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.8"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21.752 15.002A9.718 9.718 0 0 1 18 15.75
+                 c-5.385 0-9.75-4.365-9.75-9.75
+                 0-1.33.266-2.597.748-3.752
+                 A9.753 9.753 0 1 0 21.752 15.002Z"
+            />
+          </svg>
+
+          <svg
+            class="hidden size-5 dark:block"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.8"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3
+                 m15.364-6.364-1.06 1.06
+                 M6.697 17.303l-1.061 1.061
+                 m12.728 0-1.06-1.06
+                 M6.697 6.697 5.636 5.636
+                 M15.75 12a3.75 3.75 0 1 1-7.5 0
+                 3.75 3.75 0 0 1 7.5 0Z"
+            />
+          </svg>
+        </button>
       </nav>
     </header>
 
     <main class="flex-1 w-full max-w-6xl mx-auto px-3 sm:px-6 py-10 sm:py-16">
       <section
-        class="rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-8 shadow-xl"
+        class="rounded-2xl border border-slate-200 bg-white p-4 sm:p-8 shadow-xl dark:border-slate-800 dark:bg-slate-900"
       >
         <h1
-          class="text-3xl sm:text-4xl font-bold tracking-tight text-white break-words text-center sm:text-left"
+          class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-950 dark:text-white break-words text-center sm:text-left"
         >
           Contact NTI Gymnasiet Södertörn
         </h1>
 
         <p
-          class="mt-4 max-w-3xl leading-7 text-slate-400 text-sm sm:text-lg text-center sm:text-left"
+          class="mt-4 max-w-3xl leading-7 text-slate-600 dark:text-slate-400 text-sm sm:text-lg text-center sm:text-left"
         >
           If you have questions about our school, programs, or admissions,
           please use the details below.
         </p>
 
-        <h2 class="mt-8 sm:mt-10 text-2xl font-semibold text-white">
+        <h2
+          class="mt-8 sm:mt-10 text-2xl font-semibold text-slate-950 dark:text-white"
+        >
           Opening Hours
         </h2>
 
-        <ul class="mt-4 space-y-2 text-slate-400">
+        <ul class="mt-4 space-y-2 text-slate-600 dark:text-slate-400">
           <li class="text-sm sm:text-lg">Monday - Friday: 8:00 AM - 4:00 PM</li>
+
           <li class="text-sm sm:text-lg">Saturday: Closed</li>
+
           <li class="text-sm sm:text-lg">Sunday: Closed</li>
         </ul>
 
-        <h2 class="mt-8 sm:mt-10 text-2xl font-semibold text-white">
+        <h2
+          class="mt-8 sm:mt-10 text-2xl font-semibold text-slate-950 dark:text-white"
+        >
           School Contact
         </h2>
 
         <address
-          class="mt-4 rounded-xl border border-slate-800 bg-slate-950 p-4 sm:p-6 not-italic leading-7 text-slate-400 break-words"
+          class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6 not-italic leading-7 text-slate-600 break-words dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400"
         >
           <p>
-            <strong class="text-white">NTI Gymnasiet Södertörn</strong>
+            <strong class="text-slate-950 dark:text-white">
+              NTI Gymnasiet Södertörn
+            </strong>
           </p>
 
           <p>Huddinge, Stockholm</p>
@@ -99,7 +167,7 @@
             Email:
             <a
               href="mailto:sodertorn@ntig.se"
-              class="font-medium text-indigo-400 transition hover:text-indigo-300 break-all"
+              class="font-medium text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 break-all"
             >
               sodertorn@ntig.se
             </a>
@@ -111,7 +179,7 @@
               href="https://ntigymnasiet.se/sodertorn/"
               target="_blank"
               rel="noreferrer"
-              class="font-medium text-indigo-400 transition hover:text-indigo-300 break-all"
+              class="font-medium text-indigo-600 transition hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 break-all"
             >
               ntigymnasiet.se/sodertorn
             </a>
@@ -120,26 +188,28 @@
       </section>
 
       <section
-        class="mt-8 rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-8 shadow-xl"
+        class="mt-8 rounded-2xl border border-slate-200 bg-white p-4 sm:p-8 shadow-xl dark:border-slate-800 dark:bg-slate-900"
       >
-        <h2 class="text-2xl font-semibold text-white">
+        <h2 class="text-2xl font-semibold text-slate-950 dark:text-white">
           Frequently Asked Questions
         </h2>
 
         <details
-          class="mt-6 rounded-xl border border-slate-800 bg-slate-950 p-4 sm:p-5"
+          class="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-950"
         >
           <summary
-            class="cursor-pointer font-semibold text-white hover:text-indigo-400"
+            class="cursor-pointer font-semibold text-slate-950 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-400"
           >
             How can I contact the school?
           </summary>
 
-          <p class="mt-4 leading-7 text-slate-400 break-words">
+          <p
+            class="mt-4 leading-7 text-slate-600 dark:text-slate-400 break-words"
+          >
             You can email the school at
             <a
               href="mailto:sodertorn@ntig.se"
-              class="font-medium text-indigo-400 hover:text-indigo-300 break-all"
+              class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 break-all"
             >
               sodertorn@ntig.se
             </a>
@@ -148,36 +218,38 @@
         </details>
 
         <details
-          class="mt-4 rounded-xl border border-slate-800 bg-slate-950 p-4 sm:p-5"
+          class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-950"
         >
           <summary
-            class="cursor-pointer font-semibold text-white hover:text-indigo-400"
+            class="cursor-pointer font-semibold text-slate-950 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-400"
           >
             Where is NTI Gymnasiet Södertörn located?
           </summary>
 
-          <p class="mt-4 leading-7 text-slate-400">
+          <p class="mt-4 leading-7 text-slate-600 dark:text-slate-400">
             The school is located in Huddinge, Stockholm, Sweden.
           </p>
         </details>
 
         <details
-          class="mt-4 rounded-xl border border-slate-800 bg-slate-950 p-4 sm:p-5"
+          class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-5 dark:border-slate-800 dark:bg-slate-950"
         >
           <summary
-            class="cursor-pointer font-semibold text-white hover:text-indigo-400"
+            class="cursor-pointer font-semibold text-slate-950 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-400"
           >
             When is the school office open?
           </summary>
 
-          <p class="mt-4 leading-7 text-slate-400">
+          <p class="mt-4 leading-7 text-slate-600 dark:text-slate-400">
             The office is open Monday to Friday from 8:00 AM to 4:00 PM.
           </p>
         </details>
       </section>
     </main>
 
-    <footer class="border-t border-slate-800 bg-slate-900">
+    <footer
+      class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900"
+    >
       <p
         class="max-w-6xl mx-auto px-3 sm:px-6 py-6 text-center text-sm text-slate-500"
       >

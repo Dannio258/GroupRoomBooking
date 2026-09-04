@@ -4,62 +4,122 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Bookings</title>
-    <script src="script.js" defer></script>
+
+    <script src="script.js"></script>
+
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+    </style>
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
-  <body class="min-h-screen bg-slate-950 text-slate-200 flex flex-col">
-    <header class="border-b border-slate-800 bg-slate-900/80">
-      <nav class="w-full mx-auto px-3 sm:px-6 py-4 sm:py-5">
+  <body
+    class="min-h-screen bg-slate-50 text-slate-800 transition-colors dark:bg-slate-950 dark:text-slate-200 flex flex-col"
+  >
+    <header
+      class="border-b border-slate-200 bg-white/80 dark:border-slate-800 dark:bg-slate-900/80"
+    >
+      <nav
+        class="grid w-full grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] items-center px-3 py-4 sm:px-6 sm:py-5"
+      >
+        <div></div>
+
         <ul>
           <li
             class="list-none flex flex-wrap items-center justify-center gap-1 sm:gap-6"
           >
             <a
               href="index.html"
-              class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
             >
               Home
             </a>
 
             <a
               href="rooms.html"
-              class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
             >
               Rooms
             </a>
 
             <a
               href="book.html"
-              class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
             >
               Book a Room
             </a>
 
             <a
               href="bookings.html"
-              class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
             >
               My Bookings
             </a>
 
             <a
               href="contact.html"
-              class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
             >
               Contact
             </a>
           </li>
         </ul>
+
+        <button
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle dark and light mode"
+          class="flex size-10 items-center justify-center justify-self-end rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+        >
+          <svg
+            class="size-5 dark:hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.8"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21.752 15.002A9.718 9.718 0 0 1 18 15.75
+                 c-5.385 0-9.75-4.365-9.75-9.75
+                 0-1.33.266-2.597.748-3.752
+                 A9.753 9.753 0 1 0 21.752 15.002Z"
+            />
+          </svg>
+
+          <svg
+            class="hidden size-5 dark:block"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.8"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3
+                 m15.364-6.364-1.06 1.06
+                 M6.697 17.303l-1.061 1.061
+                 m12.728 0-1.06-1.06
+                 M6.697 6.697 5.636 5.636
+                 M15.75 12a3.75 3.75 0 1 1-7.5 0
+                 3.75 3.75 0 0 1 7.5 0Z"
+            />
+          </svg>
+        </button>
       </nav>
     </header>
 
     <main class="flex-1 w-full max-w-7xl mx-auto px-3 sm:px-6 py-10 sm:py-16">
       <table
-        class="block sm:table w-full rounded-2xl sm:overflow-hidden sm:border sm:border-slate-800 bg-transparent sm:bg-slate-900 text-left shadow-none sm:shadow-xl"
+        class="block sm:table w-full rounded-2xl sm:overflow-hidden sm:border sm:border-slate-200 bg-transparent sm:bg-white text-left shadow-none sm:shadow-xl dark:sm:border-slate-800 dark:sm:bg-slate-900"
       >
         <thead
-          class="hidden sm:table-header-group bg-slate-800 text-sm uppercase tracking-wide text-slate-300"
+          class="hidden sm:table-header-group bg-slate-100 text-sm uppercase tracking-wide text-slate-600 dark:bg-slate-800 dark:text-slate-300"
         >
           <tr>
             <th scope="col" class="px-5 py-4 font-semibold">Booking ID</th>
@@ -74,233 +134,233 @@
         </thead>
 
         <tbody
-          class="block sm:table-row-group sm:divide-y sm:divide-slate-800 text-slate-300"
+          class="block sm:table-row-group sm:divide-y sm:divide-slate-200 text-slate-700 dark:sm:divide-slate-800 dark:text-slate-300"
         >
           <tr
-            class="block sm:table-row mb-5 sm:mb-0 rounded-2xl sm:rounded-none border border-slate-800 sm:border-0 bg-slate-900 transition hover:bg-slate-800/60 overflow-hidden"
+            class="block sm:table-row mb-5 sm:mb-0 rounded-2xl sm:rounded-none border border-slate-200 sm:border-0 bg-white transition hover:bg-slate-100 overflow-hidden dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/60"
           >
             <td
               data-label="Booking ID"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 font-medium text-indigo-400 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 font-medium text-indigo-600 dark:border-slate-800 dark:text-indigo-400 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               BK-101
             </td>
 
             <td
               data-label="Name"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Emma Johnson
             </td>
 
             <td
               data-label="Email"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 text-slate-400 break-all sm:break-normal before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 text-slate-500 dark:border-slate-800 dark:text-slate-400 break-all sm:break-normal before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               emma.johnson@example.com
             </td>
 
             <td
               data-label="Number of People"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               8
             </td>
 
             <td
               data-label="Purpose"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Team planning meeting
             </td>
 
             <td
               data-label="Room"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Harbor Room
             </td>
           </tr>
 
           <tr
-            class="block sm:table-row mb-5 sm:mb-0 rounded-2xl sm:rounded-none border border-slate-800 sm:border-0 bg-slate-900 transition hover:bg-slate-800/60 overflow-hidden"
+            class="block sm:table-row mb-5 sm:mb-0 rounded-2xl sm:rounded-none border border-slate-200 sm:border-0 bg-white transition hover:bg-slate-100 overflow-hidden dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/60"
           >
             <td
               data-label="Booking ID"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 font-medium text-indigo-400 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 font-medium text-indigo-600 dark:border-slate-800 dark:text-indigo-400 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               BK-102
             </td>
 
             <td
               data-label="Name"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Lucas Chen
             </td>
 
             <td
               data-label="Email"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 text-slate-400 break-all sm:break-normal before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 text-slate-500 dark:border-slate-800 dark:text-slate-400 break-all sm:break-normal before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               lucas.chen@example.com
             </td>
 
             <td
               data-label="Number of People"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               4
             </td>
 
             <td
               data-label="Purpose"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Client presentation
             </td>
 
             <td
               data-label="Room"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Maple Studio
             </td>
           </tr>
 
           <tr
-            class="block sm:table-row mb-5 sm:mb-0 rounded-2xl sm:rounded-none border border-slate-800 sm:border-0 bg-slate-900 transition hover:bg-slate-800/60 overflow-hidden"
+            class="block sm:table-row mb-5 sm:mb-0 rounded-2xl sm:rounded-none border border-slate-200 sm:border-0 bg-white transition hover:bg-slate-100 overflow-hidden dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/60"
           >
             <td
               data-label="Booking ID"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 font-medium text-indigo-400 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 font-medium text-indigo-600 dark:border-slate-800 dark:text-indigo-400 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               BK-103
             </td>
 
             <td
               data-label="Name"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Sophia Patel
             </td>
 
             <td
               data-label="Email"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 text-slate-400 break-all sm:break-normal before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 text-slate-500 dark:border-slate-800 dark:text-slate-400 break-all sm:break-normal before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               sophia.patel@example.com
             </td>
 
             <td
               data-label="Number of People"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               12
             </td>
 
             <td
               data-label="Purpose"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Workshop and brainstorming
             </td>
 
             <td
               data-label="Room"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Summit Hall
             </td>
           </tr>
 
           <tr
-            class="block sm:table-row mb-5 sm:mb-0 rounded-2xl sm:rounded-none border border-slate-800 sm:border-0 bg-slate-900 transition hover:bg-slate-800/60 overflow-hidden"
+            class="block sm:table-row mb-5 sm:mb-0 rounded-2xl sm:rounded-none border border-slate-200 sm:border-0 bg-white transition hover:bg-slate-100 overflow-hidden dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/60"
           >
             <td
               data-label="Booking ID"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 font-medium text-indigo-400 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 font-medium text-indigo-600 dark:border-slate-800 dark:text-indigo-400 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               BK-104
             </td>
 
             <td
               data-label="Name"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Daniel Ortiz
             </td>
 
             <td
               data-label="Email"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 text-slate-400 break-all sm:break-normal before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 text-slate-500 dark:border-slate-800 dark:text-slate-400 break-all sm:break-normal before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               daniel.ortiz@example.com
             </td>
 
             <td
               data-label="Number of People"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               6
             </td>
 
             <td
               data-label="Purpose"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Interview panel
             </td>
 
             <td
               data-label="Room"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               River Room
             </td>
           </tr>
 
           <tr
-            class="block sm:table-row rounded-2xl sm:rounded-none border border-slate-800 sm:border-0 bg-slate-900 transition hover:bg-slate-800/60 overflow-hidden"
+            class="block sm:table-row rounded-2xl sm:rounded-none border border-slate-200 sm:border-0 bg-white transition hover:bg-slate-100 overflow-hidden dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/60"
           >
             <td
               data-label="Booking ID"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 font-medium text-indigo-400 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 font-medium text-indigo-600 dark:border-slate-800 dark:text-indigo-400 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               BK-105
             </td>
 
             <td
               data-label="Name"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Ava Thompson
             </td>
 
             <td
               data-label="Email"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 text-slate-400 break-all sm:break-normal before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 text-slate-500 dark:border-slate-800 dark:text-slate-400 break-all sm:break-normal before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               ava.thompson@example.com
             </td>
 
             <td
               data-label="Number of People"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               10
             </td>
 
             <td
               data-label="Purpose"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-800 sm:border-0 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Training session
             </td>
 
             <td
               data-label="Room"
-              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 before:content-[attr(data-label)] before:text-slate-400 before:font-semibold sm:before:content-none"
+              class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 before:content-[attr(data-label)] before:text-slate-500 before:font-semibold dark:before:text-slate-400 sm:before:content-none"
             >
               Sunset Suite
             </td>
@@ -309,7 +369,9 @@
       </table>
     </main>
 
-    <footer class="border-t border-slate-800 bg-slate-900">
+    <footer
+      class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900"
+    >
       <p
         class="max-w-6xl mx-auto px-3 sm:px-6 py-6 text-center text-sm text-slate-500"
       >
