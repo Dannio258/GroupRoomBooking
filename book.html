@@ -1,81 +1,148 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="overflow-y-auto scrollbar-none">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book a Room</title>
+
+    <script src="script.js"></script>
+
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+    </style>
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
 
-  <body class="min-h-screen bg-slate-950 text-slate-200 flex flex-col">
-    <header class="border-b border-slate-800 bg-slate-900/80">
-      <nav class="max-w-6xl mx-auto px-3 sm:px-6 py-4 sm:py-5">
-        <li
-          class="list-none flex flex-wrap items-center justify-center gap-1 sm:gap-6"
+  <body
+    class="min-h-screen bg-slate-50 text-slate-800 transition-colors dark:bg-slate-950 dark:text-slate-200 flex flex-col"
+  >
+    <header
+      class="border-b border-slate-200 bg-white/80 dark:border-slate-800 dark:bg-slate-900/80"
+    >
+      <nav
+        class="grid w-full grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] items-center px-3 py-4 sm:px-6 sm:py-5"
+      >
+        <div></div>
+
+        <ul>
+          <li
+            class="list-none flex flex-wrap items-center justify-center gap-1 sm:gap-6"
+          >
+            <a
+              href="index.html"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
+            >
+              Home
+            </a>
+
+            <a
+              href="rooms.html"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
+            >
+              Rooms
+            </a>
+
+            <a
+              href="book.html"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
+            >
+              Book a Room
+            </a>
+
+            <a
+              href="bookings.html"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
+            >
+              My Bookings
+            </a>
+
+            <a
+              href="contact.html"
+              class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white sm:px-4 sm:text-base"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+
+        <button
+          id="themeToggle"
+          type="button"
+          aria-label="Toggle dark and light mode"
+          class="flex size-10 items-center justify-center justify-self-end rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
         >
-          <a
-            href="index.html"
-            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          <svg
+            class="size-5 dark:hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.8"
+            stroke="currentColor"
           >
-            Home
-          </a>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21.752 15.002A9.718 9.718 0 0 1 18 15.75
+                 c-5.385 0-9.75-4.365-9.75-9.75
+                 0-1.33.266-2.597.748-3.752
+                 A9.753 9.753 0 1 0 21.752 15.002Z"
+            />
+          </svg>
 
-          <a
-            href="rooms.html"
-            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
+          <svg
+            class="hidden size-5 dark:block"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.8"
+            stroke="currentColor"
           >
-            Rooms
-          </a>
-
-          <a
-            href="book.html"
-            class="rounded-lg bg-indigo-600 px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-white transition hover:bg-indigo-500"
-          >
-            Book a Room
-          </a>
-
-          <a
-            href="bookings.html"
-            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
-          >
-            My Bookings
-          </a>
-
-          <a
-            href="contact.html"
-            class="rounded-lg px-3 sm:px-4 py-2 text-sm sm:text-base font-medium text-slate-300 transition hover:bg-slate-800 hover:text-white"
-          >
-            Contact
-          </a>
-        </li>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3
+                 m15.364-6.364-1.06 1.06
+                 M6.697 17.303l-1.061 1.061
+                 m12.728 0-1.06-1.06
+                 M6.697 6.697 5.636 5.636
+                 M15.75 12a3.75 3.75 0 1 1-7.5 0
+                 3.75 3.75 0 0 1 7.5 0Z"
+            />
+          </svg>
+        </button>
       </nav>
     </header>
 
     <main class="flex-1 w-full max-w-3xl mx-auto px-3 sm:px-6 py-10 sm:py-16">
       <section>
         <h1
-          class="text-3xl sm:text-5xl font-bold tracking-tight text-white text-center sm:text-left"
+          class="text-3xl sm:text-5xl font-bold tracking-tight text-slate-950 dark:text-white text-center sm:text-left"
         >
           Book a Room
         </h1>
 
         <p
-          class="mt-4 text-base sm:text-lg text-slate-400 text-center sm:text-left"
+          class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-400 text-center sm:text-left"
         >
           Please fill out the form below to book a room.
         </p>
 
         <form
-          action=""
-          method="post"
-          class="mt-8 sm:mt-10 rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-8 shadow-xl"
+          id="bookingForm"
+          class="mt-8 sm:mt-10 rounded-2xl border border-slate-200 bg-white p-4 sm:p-8 shadow-xl dark:border-slate-800 dark:bg-slate-900"
         >
-          <legend class="mb-6 text-2xl font-semibold text-white">
-            Booking Form
-          </legend>
-
           <fieldset class="flex flex-col min-w-0">
-            <label for="name" class="mb-2 font-medium text-slate-300">
+            <legend
+              class="mb-6 text-2xl font-semibold text-slate-950 dark:text-white"
+            >
+              Booking Form
+            </legend>
+
+            <label
+              for="name"
+              class="mb-2 font-medium text-slate-700 dark:text-slate-300"
+            >
               Name:
             </label>
 
@@ -85,10 +152,13 @@
               name="name"
               placeholder="Enter your full name"
               required
-              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-600"
             />
 
-            <label for="email" class="mb-2 font-medium text-slate-300">
+            <label
+              for="email"
+              class="mb-2 font-medium text-slate-700 dark:text-slate-300"
+            >
               Email:
             </label>
 
@@ -98,14 +168,22 @@
               name="email"
               placeholder="Enter your email"
               required
-              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-600"
             />
 
             <label
               for="number_of_people"
-              class="mb-2 font-medium text-slate-300"
+              class="mb-2 flex items-center justify-between gap-4 font-medium text-slate-700 dark:text-slate-300"
             >
-              Number of People:
+              <span>Number of People:</span>
+
+              <span
+                id="capacityCounter"
+                class="text-sm font-semibold text-indigo-600 dark:text-indigo-400"
+                aria-live="polite"
+              >
+                0/--
+              </span>
             </label>
 
             <input
@@ -113,24 +191,43 @@
               id="number_of_people"
               name="number_of_people"
               placeholder="Enter the number of people"
+              min="1"
               required
-              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-600"
             />
 
-            <label for="purpose" class="mb-2 font-medium text-slate-300">
+            <label
+              for="purpose"
+              class="mb-2 font-medium text-slate-700 dark:text-slate-300"
+            >
               Purpose of Booking:
             </label>
 
-            <input
-              type="text"
+            <select
               id="purpose"
               name="purpose"
-              placeholder="Enter the purpose of the booking"
               required
-              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition placeholder:text-slate-600 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+            >
+              <option value="">Select a purpose</option>
+              <option value="Study">Study</option>
+              <option value="Meeting">Meeting</option>
+              <option value="Game">Game</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <input
+              type="text"
+              id="otherPurpose"
+              name="otherPurpose"
+              placeholder="Enter your purpose"
+              class="hidden w-full min-w-0 mb-5 rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-600"
             />
 
-            <label for="room" class="mb-2 font-medium text-slate-300">
+            <label
+              for="room"
+              class="mb-2 font-medium text-slate-700 dark:text-slate-300"
+            >
               Room:
             </label>
 
@@ -138,7 +235,7 @@
               id="room"
               name="room"
               required
-              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
             >
               <option value="">Select a room</option>
               <option value="room1">Room 1</option>
@@ -146,7 +243,10 @@
               <option value="room3">Room 3</option>
             </select>
 
-            <label for="date" class="mb-2 font-medium text-slate-300">
+            <label
+              for="date"
+              class="mb-2 font-medium text-slate-700 dark:text-slate-300"
+            >
               Date:
             </label>
 
@@ -155,10 +255,13 @@
               id="date"
               name="date"
               required
-              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
             />
 
-            <label for="time" class="mb-2 font-medium text-slate-300">
+            <label
+              for="time"
+              class="mb-2 font-medium text-slate-700 dark:text-slate-300"
+            >
               Start Time:
             </label>
 
@@ -167,10 +270,13 @@
               id="time"
               name="time"
               required
-              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
             />
 
-            <label for="end_time" class="mb-2 font-medium text-slate-300">
+            <label
+              for="end_time"
+              class="mb-2 font-medium text-slate-700 dark:text-slate-300"
+            >
               End Time:
             </label>
 
@@ -179,10 +285,13 @@
               id="end_time"
               name="end_time"
               required
-              class="w-full min-w-0 mb-5 rounded-lg border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              class="w-full min-w-0 mb-5 rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-950 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
             />
 
-            <label for="terms" class="mb-2 font-medium text-slate-300">
+            <label
+              for="terms"
+              class="mb-2 font-medium text-slate-700 dark:text-slate-300"
+            >
               Accept Terms and Conditions:
             </label>
 
@@ -205,7 +314,9 @@
       </section>
     </main>
 
-    <footer class="border-t border-slate-800 bg-slate-900">
+    <footer
+      class="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900"
+    >
       <p
         class="max-w-6xl mx-auto px-3 sm:px-6 py-6 text-center text-sm text-slate-500"
       >
