@@ -182,68 +182,68 @@ document.addEventListener("DOMContentLoaded", () => {
       const row = document.createElement("tr");
 
       row.className =
-        "block sm:table-row mb-5 sm:mb-0 rounded-2xl sm:rounded-none border border-slate-200 sm:border-0 bg-white transition hover:bg-slate-50 overflow-hidden dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/60";
+        "block 2xl:table-row mb-3 2xl:mb-0 rounded-xl 2xl:rounded-none border border-slate-200 2xl:border-0 bg-white transition hover:bg-slate-50 overflow-hidden dark:border-slate-800 dark:bg-slate-900 dark:hover:bg-slate-800/60";
 
       row.innerHTML = `
         <td
           data-label="Booking ID"
-          class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 text-center font-medium text-indigo-600 dark:border-slate-800 dark:text-indigo-400 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold sm:before:content-none"
+          class="flex items-center 2xl:table-cell 2xl:whitespace-nowrap justify-between gap-3 px-3 sm:px-4 2xl:px-3 py-2.5 sm:py-3 2xl:py-4 border-b border-slate-200 2xl:border-0 text-center font-medium text-indigo-600 dark:border-slate-800 dark:text-indigo-400 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold 2xl:before:content-none"
         >
           ${booking.id}
         </td>
 
         <td
           data-label="Name"
-          class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 text-center dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold sm:before:content-none"
+          class="flex items-center 2xl:table-cell 2xl:whitespace-nowrap justify-between gap-3 px-3 sm:px-4 2xl:px-3 py-2.5 sm:py-3 2xl:py-4 border-b border-slate-200 2xl:border-0 text-center font-medium text-indigo-600 dark:border-slate-800 dark:text-indigo-400 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold 2xl:before:content-none"
         >
           ${booking.name}
         </td>
 
         <td
           data-label="Email"
-          class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 text-center text-slate-500 break-all sm:break-normal dark:border-slate-800 dark:text-slate-400 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold sm:before:content-none overflow-x-hidden"
+          class="flex items-center 2xl:table-cell justify-between gap-3 px-3 sm:px-4 2xl:px-3 py-2.5 sm:py-3 2xl:py-4 border-b border-slate-200 2xl:border-0 text-center text-slate-500 break-all 2xl:break-normal 2xl:whitespace-nowrap dark:border-slate-800 dark:text-slate-400 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold 2xl:before:content-none overflow-hidden"
         >
           ${booking.email}
         </td>
 
         <td
           data-label="Number of People"
-          class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 text-center dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold sm:before:content-none"
+          class="flex items-center 2xl:table-cell 2xl:whitespace-nowrap justify-between gap-3 px-3 sm:px-4 2xl:px-3 py-2.5 sm:py-3 2xl:py-4 border-b border-slate-200 2xl:border-0 text-center font-medium text-indigo-600 dark:border-slate-800 dark:text-indigo-400 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold 2xl:before:content-none"
         >
           ${booking.numberOfPeople}
         </td>
 
         <td
           data-label="Purpose"
-          class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-b border-slate-200 sm:border-0 text-center dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold sm:before:content-none"
+          class="flex items-center 2xl:table-cell 2xl:whitespace-nowrap justify-between gap-3 px-3 sm:px-4 2xl:px-3 py-2.5 sm:py-3 2xl:py-4 border-b border-slate-200 2xl:border-0 text-center font-medium text-indigo-600 dark:border-slate-800 dark:text-indigo-400 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold 2xl:before:content-none"
         >
           ${booking.purpose}
         </td>
 
         <td
           data-label="Room"
-          class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 text-center before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold sm:before:content-none"
+          class="flex items-center 2xl:table-cell 2xl:whitespace-nowrap justify-between gap-3 px-3 sm:px-4 2xl:px-3 py-2.5 sm:py-3 2xl:py-4 border-b border-slate-200 2xl:border-0 text-center dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold 2xl:before:content-none"
         >
           ${booking.room}
         </td>
 
         <td
           data-label="Date"
-          class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-t sm:border-0 border-slate-200 text-center dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold sm:before:content-none"
+          class="flex items-center 2xl:table-cell 2xl:whitespace-nowrap justify-between gap-3 px-3 sm:px-4 2xl:px-3 py-2.5 sm:py-3 2xl:py-4 border-b border-slate-200 2xl:border-0 text-center dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold 2xl:before:content-none"
         >
           ${booking.date}
         </td>
 
         <td
           data-label="Start Time"
-          class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-t sm:border-0 border-slate-200 text-center dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold sm:before:content-none"
+          class="flex items-center 2xl:table-cell 2xl:whitespace-nowrap justify-between gap-3 px-3 sm:px-4 2xl:px-3 py-2.5 sm:py-3 2xl:py-4 border-b border-slate-200 2xl:border-0 text-center dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold 2xl:before:content-none"
         >
           ${booking.time}
         </td>
 
         <td
           data-label="End Time"
-          class="flex sm:table-cell justify-between gap-4 px-4 sm:px-5 py-3 sm:py-5 border-t sm:border-0 border-slate-200 text-center dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold sm:before:content-none"
+          class="flex items-center 2xl:table-cell 2xl:whitespace-nowrap justify-between gap-3 px-3 sm:px-4 2xl:px-3 py-2.5 sm:py-3 2xl:py-4 border-b border-slate-200 2xl:border-0 text-center dark:border-slate-800 before:content-[attr(data-label)] before:text-slate-500 dark:before:text-slate-400 before:font-semibold 2xl:before:content-none"
         >
           ${booking.endTime}
         </td>
@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
       input.setAttribute("aria-label", label);
 
       input.className =
-        "w-full min-w-0 rounded-lg border border-slate-300 bg-white px-2 py-2 text-center text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200";
+        "w-auto field-sizing-content max-w-[65%] ml-auto 2xl:mx-auto 2xl:max-w-none 2xl:block whitespace-nowrap rounded-lg border border-slate-300 bg-white px-2 py-2 text-center text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200";
 
       if (min) {
         input.min = min;
@@ -410,24 +410,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     actionsCell.innerHTML = `
-        <div class="flex flex-wrap justify-center gap-3">
-          <button
-            type="button"
-            data-action="save"
-            class="rounded-lg bg-emerald-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-emerald-500"
-          >
-            Save
-          </button>
+    <div class="flex justify-center items-center gap-2 px-2 whitespace-nowrap">
+      <button
+        type="button"
+        data-action="save"
+        class="rounded-lg bg-emerald-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-emerald-500"
+      >
+        Save
+      </button>
 
-          <button
-            type="button"
-            data-action="cancel"
-            class="rounded-lg bg-slate-200 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-300 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600"
-          >
-            Cancel
-          </button>
-        </div>
-      `;
+      <button
+        type="button"
+        data-action="cancel"
+        class="rounded-lg bg-slate-200 px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-300 dark:bg-slate-700 dark:text-white dark:hover:bg-slate-600"
+      >
+        Cancel
+      </button>
+    </div>
+  `;
 
     actionsCell
       .querySelector('[data-action="save"]')
@@ -443,7 +443,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
           if (input) {
             inputsByKey[key] = input;
-
             updatedBooking[key] = input.value;
           }
         });
@@ -453,11 +452,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const numberOfPeopleInput = inputsByKey.numberOfPeople;
 
         const roomInput = inputsByKey.room;
-
         const dateInput = inputsByKey.date;
-
         const startTimeInput = inputsByKey.time;
-
         const endTimeInput = inputsByKey.endTime;
 
         const capacity = await getRoomCapacity(roomInput.value.trim());
@@ -526,24 +522,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const addActions = (row, booking, actionsCell) => {
     actionsCell.innerHTML = `
-        <div class="flex flex-wrap justify-center gap-3">
-          <button
-            type="button"
-            data-action="edit"
-            class="rounded-lg bg-indigo-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-indigo-500"
-          >
-            Edit
-          </button>
+      <div class="flex justify-center gap-4 px-2 whitespace-nowrap">
+        <button
+          type="button"
+          data-action="edit"
+          class="rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-500"
+        >
+          Edit
+        </button>
 
-          <button
-            type="button"
-            data-action="delete"
-            class="rounded-lg bg-rose-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-rose-500"
-          >
-            Delete
-          </button>
-        </div>
-      `;
+        <button
+          type="button"
+          data-action="delete"
+          class="rounded-lg bg-rose-600 px-4 py-3 text-sm font-medium text-white transition hover:bg-rose-500"
+        >
+          Delete
+        </button>
+      </div>
+    `;
 
     actionsCell
       .querySelector('[data-action="edit"]')
@@ -590,7 +586,7 @@ document.addEventListener("DOMContentLoaded", () => {
     actionsCell.dataset.label = "Actions";
 
     actionsCell.className =
-      "flex sm:table-cell justify-center gap-2 px-4 sm:px-5 py-3 sm:py-5 text-center";
+      "flex 2xl:table-cell 2xl:whitespace-nowrap justify-center px-3 sm:px-4 2xl:px-4 py-2.5 sm:py-3 2xl:py-4 text-center";
 
     row.appendChild(actionsCell);
 
