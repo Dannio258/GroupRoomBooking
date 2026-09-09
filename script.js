@@ -1,3 +1,50 @@
+const addTimeOptions = (select, start, end, selectedValue = "") => {
+  for (let minutes = start; minutes <= end; minutes += 10) {
+    const hour = Math.floor(minutes / 60);
+    const minute = minutes % 60;
+
+    const time =
+      String(hour).padStart(2, "0") + ":" + String(minute).padStart(2, "0");
+
+    const option = new Option(time, time);
+
+    if (time === selectedValue) {
+      option.selected = true;
+    }
+
+    select.add(option);
+  }
+};
+
+const hasBookingConflict = (
+  bookings,
+  room,
+  date,
+  startTime,
+  endTime,
+  ignoredBookingId = null,
+) => {
+  return bookings.some((booking) => {
+    return (
+      booking.id !== ignoredBookingId &&
+      booking.room === room &&
+      booking.date === date &&
+      startTime < booking.endTime &&
+      endTime > booking.time
+    );
+  });
+};
+
+const isWeekend = (date) => {
+  if (!date) return false;
+
+  const [year, month, day] = date.split("-").map(Number);
+
+  const selectedDate = new Date(year, month - 1, day);
+
+  return selectedDate.getDay() === 0 || selectedDate.getDay() === 6;
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   const bookingForm = document.getElementById("bookingForm");
   const bookingsTable = document.querySelector("#bookingsTable");
@@ -13,6 +60,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const startTimeInput = document.getElementById("time");
     const endTimeInput = document.getElementById("end_time");
     const maxBookingYears = 1;
+
+    const params = new URLSearchParams(window.location.search);
+    const selectedRoom = params.get("room");
+
+    const updateTimeOptions = () => {
+      let earliestStartTime = 8 * 60;
+
+      if (dateInput.value === getToday()) {
+        const now = new Date();
+
+        let currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+        if (now.getSeconds() > 0) {
+          currentMinutes++;
+        }
+
+        earliestStartTime = Math.ceil(currentMinutes / 10) * 10;
+
+        earliestStartTime = Math.max(earliestStartTime, 8 * 60);
+      }
+
+      // Keep the first placeholder option only.
+      startTimeInput.length = 1;
+      endTimeInput.length = 1;
+
+      addTimeOptions(startTimeInput, earliestStartTime, 15 * 60 + 50);
+
+      addTimeOptions(endTimeInput, earliestStartTime + 10, 16 * 60);
+    };
 
     // Date range: allow bookings from today through one year ahead.
     const getToday = () => {
@@ -90,6 +166,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return capacity;
     };
 
+    if (selectedRoom) {
+      roomSelect.value = selectedRoom;
+      updatePeopleLimit();
+    }
+
     // Date and time validation.
     const validateDateAndTime = () => {
       dateInput.min = getToday();
@@ -99,9 +180,30 @@ document.addEventListener("DOMContentLoaded", () => {
         dateInput.value && dateInput.value < dateInput.min
           ? "The booking date cannot be in the past."
           : dateInput.value && dateInput.value > dateInput.max
-            ? `Bookings can only be made up to ${maxBookingYears} year in advance.`
-            : "",
+            ? "Bookings can only be made up to 1 year in advance."
+            : isWeekend(dateInput.value)
+              ? "Rooms cannot be booked on weekends."
+              : "",
       );
+
+      if (dateInput.value === getToday() && startTimeInput.value) {
+        const now = new Date();
+
+        const currentSeconds =
+          now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+
+        const [hours, minutes] = startTimeInput.value.split(":").map(Number);
+
+        const selectedSeconds = hours * 3600 + minutes * 60;
+
+        startTimeInput.setCustomValidity(
+          selectedSeconds < currentSeconds
+            ? "Start time cannot be in the past."
+            : "",
+        );
+      } else {
+        startTimeInput.setCustomValidity("");
+      }
 
       endTimeInput.setCustomValidity(
         startTimeInput.value &&
@@ -128,7 +230,16 @@ document.addEventListener("DOMContentLoaded", () => {
     dateInput.min = getToday();
     dateInput.max = getMaximumBookingDate();
 
-    dateInput.addEventListener("change", validateDateAndTime);
+    updateTimeOptions();
+
+    dateInput.addEventListener("change", () => {
+      updateTimeOptions();
+      validateDateAndTime();
+
+      if (!dateInput.checkValidity()) {
+        dateInput.reportValidity();
+      }
+    });
 
     startTimeInput.addEventListener("input", validateDateAndTime);
 
@@ -165,6 +276,26 @@ document.addEventListener("DOMContentLoaded", () => {
       };
 
       const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+      const bookingConflict = hasBookingConflict(
+        bookings,
+        booking.room,
+        booking.date,
+        booking.time,
+        booking.endTime,
+      );
+
+      if (bookingConflict) {
+        endTimeInput.setCustomValidity(
+          "This room is already booked during the selected time.",
+        );
+
+        endTimeInput.reportValidity();
+
+        return;
+      }
+
+      endTimeInput.setCustomValidity("");
 
       bookings.push(booking);
 
@@ -378,16 +509,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
       cell.textContent = "";
 
-      const input = document.createElement("input");
+      const isTimeField = key === "time" || key === "endTime";
 
-      input.type = type;
-      input.value = booking[key] ?? "";
+      const input = isTimeField
+        ? document.createElement("select")
+        : document.createElement("input");
+
+      if (!isTimeField) {
+        input.type = type;
+        input.value = booking[key] ?? "";
+      }
+
       input.dataset.field = key;
 
       input.setAttribute("aria-label", label);
 
       input.className =
-        "w-auto field-sizing-content max-w-[65%] ml-auto 2xl:mx-auto 2xl:max-w-none 2xl:block whitespace-nowrap rounded-lg border border-slate-300 bg-white px-2 py-2 text-center text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200";
+        "w-auto field-sizing-content max-w-[65%] ml-auto 2xl:mx-auto 2xl:max-w-none 2xl:block whitespace-nowrap rounded-lg border border-slate-300 bg-white px-2 py-2 text-center text-slate-900 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:[&::-webkit-calendar-picker-indicator]:invert";
 
       if (min) {
         input.min = min;
@@ -408,6 +546,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
       cell.appendChild(input);
     });
+
+    const editDateInput = row.querySelector('[data-field="date"]');
+    const editStartTimeInput = row.querySelector('[data-field="time"]');
+    const editEndTimeInput = row.querySelector('[data-field="endTime"]');
+
+    const updateEditingTimeOptions = () => {
+      let earliestStartTime = 8 * 60;
+
+      if (editDateInput.value === getToday()) {
+        const now = new Date();
+
+        let currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+        if (now.getSeconds() > 0) {
+          currentMinutes++;
+        }
+
+        earliestStartTime = Math.ceil(currentMinutes / 10) * 10;
+
+        earliestStartTime = Math.max(earliestStartTime, 8 * 60);
+      }
+
+      const selectedStartTime = editStartTimeInput.value || booking.time;
+
+      const selectedEndTime = editEndTimeInput.value || booking.endTime;
+
+      editStartTimeInput.innerHTML = "";
+      editEndTimeInput.innerHTML = "";
+
+      addTimeOptions(
+        editStartTimeInput,
+        earliestStartTime,
+        15 * 60 + 50,
+        selectedStartTime,
+      );
+
+      addTimeOptions(
+        editEndTimeInput,
+        earliestStartTime + 10,
+        16 * 60,
+        selectedEndTime,
+      );
+    };
+
+    updateEditingTimeOptions();
+
+    editDateInput.addEventListener("change", updateEditingTimeOptions);
 
     actionsCell.innerHTML = `
     <div class="flex justify-center items-center gap-2 px-2 whitespace-nowrap">
@@ -439,7 +624,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const inputsByKey = {};
 
         bookingFields.forEach(({ key }) => {
-          const input = row.querySelector(`input[data-field="${key}"]`);
+          const input = row.querySelector(`[data-field="${key}"]`);
 
           if (input) {
             inputsByKey[key] = input;
@@ -456,7 +641,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const startTimeInput = inputsByKey.time;
         const endTimeInput = inputsByKey.endTime;
 
-        const capacity = await getRoomCapacity(roomInput.value.trim());
+        updatedBooking.room = roomInput.value.trim();
+
+        const capacity = await getRoomCapacity(updatedBooking.room);
 
         numberOfPeopleInput.max = capacity || "";
 
@@ -473,8 +660,29 @@ document.addEventListener("DOMContentLoaded", () => {
             ? "The booking date cannot be in the past."
             : dateInput.value > dateInput.max
               ? "Bookings can only be made up to 1 year in advance."
-              : "",
+              : isWeekend(dateInput.value)
+                ? "Rooms cannot be booked on weekends."
+                : "",
         );
+
+        if (dateInput.value === getToday() && startTimeInput.value) {
+          const now = new Date();
+
+          const currentSeconds =
+            now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+
+          const [hours, minutes] = startTimeInput.value.split(":").map(Number);
+
+          const selectedSeconds = hours * 3600 + minutes * 60;
+
+          startTimeInput.setCustomValidity(
+            selectedSeconds < currentSeconds
+              ? "Start time cannot be in the past."
+              : "",
+          );
+        } else {
+          startTimeInput.setCustomValidity("");
+        }
 
         endTimeInput.setCustomValidity(
           startTimeInput.value &&
@@ -491,6 +699,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+        const bookingConflict = hasBookingConflict(
+          bookings,
+          updatedBooking.room,
+          updatedBooking.date,
+          updatedBooking.time,
+          updatedBooking.endTime,
+          booking.id,
+        );
+
+        if (bookingConflict) {
+          endTimeInput.setCustomValidity(
+            "This room is already booked during the selected time.",
+          );
+
+          endTimeInput.reportValidity();
+
+          return;
+        }
+
+        endTimeInput.setCustomValidity("");
 
         const bookingIndex = bookings.findIndex(
           (savedBooking) => savedBooking.id === booking.id,
@@ -559,20 +788,6 @@ document.addEventListener("DOMContentLoaded", () => {
         row.remove();
       });
   };
-
-  const headerRow = bookingsTable.querySelector("thead tr");
-
-  if (headerRow) {
-    const actionsHeader = document.createElement("th");
-
-    actionsHeader.scope = "col";
-
-    actionsHeader.className = "px-5 py-4 font-semibold";
-
-    actionsHeader.textContent = "Actions";
-
-    headerRow.appendChild(actionsHeader);
-  }
 
   [...bookingsTable.rows].forEach((row) => {
     const booking = JSON.parse(localStorage.getItem("bookings"))?.find(
